@@ -1,4 +1,5 @@
 # Datos de ejemplo
+import emoji
 participante1 = {
     'nombre': 'Dara',
     'grado': '2do', 
@@ -174,11 +175,11 @@ print("\nBienvenido al Organizador de eventos escolares")
 
 while True:
     print("\n¿Qué deseas hacer el día de hoy?")
-    print("1. Registrar participante")
-    print("2. Eliminar participante")
-    print("3. Modificar información de un participante")
-    print("4. Consultar lista de participantes")
-    print("5. Salir")
+    print("✅1. Registrar participante")
+    print("❌2. Eliminar participante")
+    print("✏️3. Modificar información de un participante")
+    print("🔎4. Consultar lista de participantes")
+    print("🚪5. Salir")
 
     opcion = input("\nElige una opción: ")
 
