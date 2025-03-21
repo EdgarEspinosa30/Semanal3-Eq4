@@ -1,0 +1,202 @@
+# Datos de ejemplo
+participante1 = {
+    'nombre': 'Dara',
+    'grado': '2do', 
+    'tipo de Evento': 'Social',
+    'tipo de participación': 'Decoracion'
+}
+participante2 = {
+    'nombre': 'Edgar',
+    'grado': '2do', 
+    'tipo de Evento': 'Escolar',
+    'tipo de participación': 'Decoracion'
+}
+participante3 = {
+    'nombre': 'Irving',
+    'grado': '2do', 
+    'tipo de Evento': 'Escolar',
+    'tipo de participación': 'Decoracion'
+}
+
+# Inicializar lista
+participantes_list = [participante1, participante2, participante3]
+
+# Método para imprimir lista completa
+def ImprimirListaParticipantes(lista):
+    for participante in lista:
+        print(f"   Nombre: {participante['nombre']}")
+        print(f"   Grado: {participante['grado']}")
+        print(f"   Tipo de Evento: {participante['tipo de Evento']}")
+        print(f"   Tipo de participación: {participante['tipo de participación']}")
+        
+
+# Método para imprimir un solo participante
+def imprimir_participante(participante):
+    
+    print(f"   Nombre: {participante['nombre']}")
+    print(f"   Grado: {participante['grado']}")
+    print(f"   Tipo de Evento: {participante['tipo de Evento']}")
+    print(f"   Tipo de participación: {participante['tipo de participación']}")
+    
+
+# Método para agregar nuevo participante
+def AgregarParticipanteNuevo():
+    ingreso_nombre = input("Ingresa el nombre del participante: ")
+    ingreso_grado = input("Ingresa el grado: ")
+    ingreso_evento = input("Ingresa el evento: ")
+    ingreso_participacion = input("Ingrese el tipo de participación: ")
+
+    nuevo_participante = {
+        "nombre": ingreso_nombre,
+        "grado": ingreso_grado,
+        "tipo de Evento": ingreso_evento,
+        "tipo de participación": ingreso_participacion
+    }
+    
+    participantes_list.append(nuevo_participante)
+    print("\nParticipante agregado correctamente:")
+    imprimir_participante(nuevo_participante)
+
+# Método para dar de baja
+def baja_participante():
+    if not participantes_list:
+        print("No hay participantes en la lista.")
+        return
+
+    print("\nPARTICIPANTES:")
+    ImprimirListaParticipantes(participantes_list)
+
+    try:
+        baja_nombre =input("Ingresa el nombre del participante a dar de baja: ")
+    except ValueError:
+        print("Error: Debes ingresar un nombre valido.")
+        return
+
+    for participante in participantes_list:
+        if participante['nombre'] == baja_nombre:
+            participantes_list.remove(participante)
+            print(f"El participante con el nombre {baja_nombre} ha sido eliminado.")
+            return
+    
+    print("El nombre ingresado no existe en la lista.")
+
+# Método para modificar un participante
+def modificar_participante():
+    if not participantes_list:
+        print("No hay participantes en la lista.")
+        return
+
+    print("\nPARTICIPANTES:")
+    ImprimirListaParticipantes(participantes_list)
+
+    try:
+        modificar_nombres = input("Ingresa el nombre del participante a modificar: ")
+    except ValueError:
+        print("Error: Debes ingresar un nombre valido.")
+        return
+
+    for participante in participantes_list:
+        if participante["nombre"] == modificar_nombres:
+            while True:
+                print("\n¿Qué deseas modificar?")
+                print("1. Nombre")
+                print("2. Grado")
+                print("3. Tipo de Evento")
+                print("4. Tipo de participación")
+                print("5. Salir y regresar al menú principal")
+                opcion = input("Ingresa una opción: ")
+
+                if opcion == "1":
+                    nuevo_nombre = input("Ingresa el nuevo nombre: ")
+                    participante["nombre"] = nuevo_nombre
+                    print(f"El nombre se ha modificado a {nuevo_nombre}")
+
+                elif opcion == "2":
+                    nuevo_grado = input("Ingresa el grado correcto: ")
+                    participante["grado"] = nuevo_grado
+                    print(f"El grado se ha modificado a {nuevo_grado}")
+
+                elif opcion == "3":
+                    nuevo_tipo_evento = input("Ingresa el nuevo tipo de evento: ")
+                    participante["tipo de Evento"] = nuevo_tipo_evento
+                    print(f"El tipo de evento se ha modificado a {nuevo_tipo_evento}")
+                
+                elif opcion == "4":
+                    nuevo_tipo_participacion = input("Ingresa el nuevo tipo de participación:")
+                    participante["tipo de participación"]= nuevo_tipo_participacion
+                    print(f"El tipo de participacion se ha modificado a {nuevo_tipo_participacion}")
+
+                elif opcion == "5":
+                    print("Regresando al menú")
+                    return
+
+                else:
+                    print("Opción no válida, intenta de nuevo.")
+            break
+    else:
+        print("El nombre ingresado no existe en la lista.")
+
+# Métodos de ordenación
+def obtener_tipo_evento(participante):
+    return participante["tipo de Evento"]
+
+def obtener_nombre(participante):
+    return participante["nombre"].lower()
+
+# Método para consultar participantes
+def consultar_participantes():
+    print("\nBienvenido a la sección de consulta de participantes")
+    print("¿Cómo te gustaría visualizar los participantes?")
+    print("1. Ordenados por nombre")
+    print("2. Ordenados por tipo de evento")
+    
+    opcion = input("Ingresa una opción: ")
+
+    if not participantes_list:
+        print("No hay participantes agregados.")
+        return
+
+    if opcion == "1":
+        participantes_ordenados = sorted(participantes_list, key= obtener_nombre)
+        print("\nParticipantes ordenados por Nombre:")
+        ImprimirListaParticipantes(participantes_ordenados)
+
+    elif opcion == "2":
+        participantes_ordenados = sorted(participantes_list, key=obtener_tipo_evento)
+        print("\nParticipantes ordenados por tipo de evento:")
+        ImprimirListaParticipantes(participantes_ordenados)
+
+    else:
+        print("Opción no válida, intenta de nuevo.")
+
+# Ingreso
+print("\nBienvenido al Organizador de eventos escolares")
+
+while True:
+    print("\n¿Qué deseas hacer el día de hoy?")
+    print("1. Registrar participante")
+    print("2. Eliminar participante")
+    print("3. Modificar información de un participante")
+    print("4. Consultar lista de participantes")
+    print("5. Salir")
+
+    opcion = input("\nElige una opción: ")
+
+    if opcion == "1":
+        AgregarParticipanteNuevo()
+
+    elif opcion == "2":
+        baja_participante()
+
+    elif opcion == "3":
+        modificar_participante()
+
+    elif opcion == "4":
+        consultar_participantes()
+
+    elif opcion == "5":
+        print("¡Gracias por utilizar el Organizador de eventos escolares!")
+        break
+
+    else:
+        print("Opción no válida, intenta de nuevo.")
