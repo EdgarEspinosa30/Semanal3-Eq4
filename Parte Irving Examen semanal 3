@@ -1,0 +1,31 @@
+# Ingreso
+print("\nBienvenido al Organizador de eventos escolares")
+
+while True:
+    print("\n¿Qué deseas hacer el día de hoy?")
+    print("1. Registrar participante")
+    print("2. Eliminar participante")
+    print("3. Modificar información de un participante")
+    print("4. Consultar lista de participantes")
+    print("5. Salir")
+
+    opcion = input("\nElige una opción: ")
+
+    if opcion == "1":
+        AgregarParticipanteNuevo()
+
+    elif opcion == "2":
+        baja_participante()
+
+    elif opcion == "3":
+        modificar_participante()
+
+    elif opcion == "4":
+        consultar_participantes()
+
+    elif opcion == "5":
+        print("¡Gracias por utilizar el Organizador de eventos escolares!")
+        break
+
+    else:
+        print("Opción no válida, intenta de nuevo.")
