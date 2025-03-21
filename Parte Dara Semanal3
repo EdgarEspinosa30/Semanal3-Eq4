@@ -1,0 +1,81 @@
+# Datos de ejemplo
+participante1 = {
+    'nombre': 'Dara',
+    'grado': '2do', 
+    'tipo de Evento': 'Social',
+    'tipo de participación': 'Decoracion'
+}
+participante2 = {
+    'nombre': 'Edgar',
+    'grado': '2do', 
+    'tipo de Evento': 'Escolar',
+    'tipo de participación': 'Decoracion'
+}
+participante3 = {
+    'nombre': 'Irving',
+    'grado': '2do', 
+    'tipo de Evento': 'Escolar',
+    'tipo de participación': 'Decoracion'
+}
+
+# Inicializar lista
+participantes_list = [participante1, participante2, participante3]
+
+# Método para imprimir lista completa
+def ImprimirListaParticipantes(lista):
+    for participante in lista:
+        print(f"   Nombre: {participante['nombre']}")
+        print(f"   Grado: {participante['grado']}")
+        print(f"   Tipo de Evento: {participante['tipo de Evento']}")
+        print(f"   Tipo de participación: {participante['tipo de participación']}")
+        
+
+# Método para imprimir un solo participante
+def imprimir_participante(participante):
+    
+    print(f"   Nombre: {participante['nombre']}")
+    print(f"   Grado: {participante['grado']}")
+    print(f"   Tipo de Evento: {participante['tipo de Evento']}")
+    print(f"   Tipo de participación: {participante['tipo de participación']}")
+    
+
+# Método para agregar nuevo participante
+def AgregarParticipanteNuevo():
+    ingreso_nombre = input("Ingresa el nombre del participante: ")
+    ingreso_grado = input("Ingresa el grado: ")
+    ingreso_evento = input("Ingresa el evento: ")
+    ingreso_participacion = input("Ingrese el tipo de participación: ")
+
+    nuevo_participante = {
+        "nombre": ingreso_nombre,
+        "grado": ingreso_grado,
+        "tipo de Evento": ingreso_evento,
+        "tipo de participación": ingreso_participacion
+    }
+    
+    participantes_list.append(nuevo_participante)
+    print("\nParticipante agregado correctamente:")
+    imprimir_participante(nuevo_participante)
+
+# Método para dar de baja
+def baja_participante():
+    if not participantes_list:
+        print("No hay participantes en la lista.")
+        return
+
+    print("\nPARTICIPANTES:")
+    ImprimirListaParticipantes(participantes_list)
+
+    try:
+        baja_nombre =input("Ingresa el nombre del participante a dar de baja: ")
+    except ValueError:
+        print("Error: Debes ingresar un nombre valido.")
+        return
+
+    for participante in participantes_list:
+        if participante['nombre'] == baja_nombre:
+            participantes_list.remove(participante)
+            print(f"El participante con el nombre {baja_nombre} ha sido eliminado.")
+            return
+    
+    print("El nombre ingresado no existe en la lista.")
