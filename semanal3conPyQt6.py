@@ -1,5 +1,6 @@
 import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QMessageBox, QInputDialog
+from PyQt6.QtGui import QIcon
 
 # Datos de ejemplo
 participante1 = {
@@ -34,22 +35,27 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout()
 
         self.btn_agregar = QPushButton("Registrar Participante")
+        self.btn_agregar.setIcon(QIcon("C:/Users/Alumno/Downloads/rparticipante.jpg"))
         self.btn_agregar.clicked.connect(self.agregar_participante)
         layout.addWidget(self.btn_agregar)
 
         self.btn_eliminar = QPushButton("Eliminar Participante")
+        self.btn_eliminar.setIcon(QIcon("C:/Users/Alumno/Downloads/eliminar.png"))
         self.btn_eliminar.clicked.connect(self.eliminar_participante)
         layout.addWidget(self.btn_eliminar)
 
         self.btn_modificar = QPushButton("Modificar Participante")
+        self.btn_modificar.setIcon(QIcon("C:/Users/Alumno/Downloads/modif.png"))
         self.btn_modificar.clicked.connect(self.modificar_participante)
         layout.addWidget(self.btn_modificar)
 
         self.btn_consultar = QPushButton("Consultar Participantes")
+        self.btn_consultar.setIcon(QIcon("C:/Users/Alumno/Downloads/consultar.jpg"))
         self.btn_consultar.clicked.connect(self.consultar_participantes)
         layout.addWidget(self.btn_consultar)
 
         self.btn_salir = QPushButton("Salir")
+        self.btn_salir.setIcon(QIcon("C:/Users/Alumno/Downloads/salir.jpg"))
         self.btn_salir.clicked.connect(self.close)
         layout.addWidget(self.btn_salir)
 
